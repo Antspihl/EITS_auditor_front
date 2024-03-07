@@ -1,7 +1,7 @@
 <template>
-  <HelloWorld />
+  <AuditList />
 </template>
 
 <script lang="ts" setup>
-  import HelloWorld from '@/components/HelloWorld.vue'
+  import AuditList from '@/components/AuditList.vue'
 </script>
