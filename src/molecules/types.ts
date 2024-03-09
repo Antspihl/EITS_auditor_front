@@ -14,3 +14,18 @@ export type Sys21M1 = Measure & {
   autoLogonIsDisabled: boolean,
   baseObjectsAreAudited: boolean
 }
+
+export type Sys21M3 = Measure & {
+  automaticUpdatingEnabled: boolean,
+  checkForUpdatesDailyEnabled: boolean,
+  controlUpdateServerAuthenticity: boolean,
+  checkUpdatePackagesIntegrity: boolean,
+  usesWSUS: boolean,
+  previousStateIsRestorable: boolean
+}
+
+export type Sys21M6 = Measure & {
+  antiMalwareEnabled: boolean,
+  antiMalwareUpToDate: boolean
+}
+
