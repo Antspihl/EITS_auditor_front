@@ -32,6 +32,7 @@ function getMeasureTitle(obj: Measure) {
       return TranslateMeasure[key as keyof typeof TranslateMeasure];
     }
   }
+  return "Tundmatu meetod"
 }
 
 defineProps<{
