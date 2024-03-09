@@ -19,13 +19,17 @@ export enum TranslationEnum {
   previousStateIsRestorable = "f. Vajadusel on võimalik klientarvutis taastada uuendamise eelne tarkvaraseis.",
   //Sys21M6
   antiMalwareEnabled = "a. Klientarvutid on varustatud aktiveeritud kahjurvaratõrje tarkvaraga.",
-  antiMalwareUpToDate= "Antivirus on ajakohane"
+  antiMalwareUpToDate= "Antivirus on ajakohane",
+  //Sys223M13
+  smartScreenEdgeDisabled = "a. Microsoft Defenderi funktsioon SmartScreen, mis kontrollib Internetist (MS Edge browserit kasutades) alla laaditud faile ja veebisisu võimaliku kahjurtarkvara suhtes, kuid võib teatud tingimustel edastada Microsoftile isikuandmeid, on desaktiveeritud.",
+  smartScreenPuaDisabled = "SmartScreenPua on välja lülitatud"
 }
 
 export enum TranslateMeasure {
   //the first value of type = Measure code
-  screenSaverIsEnabled = "SYS2.1.M1",
-  firewallEnabled = "SYS2.2.3.M5",
-  automaticUpdatingEnabled = "SYS2.1.M3",
-  antiMalwareEnabled = "SYS2.1.M6"
+  screenSaverIsEnabled = "SYS.2.1.M1",
+  firewallEnabled = "SY.2.2.3.M5",
+  automaticUpdatingEnabled = "SYS.2.1.M3",
+  antiMalwareEnabled = "SYS.2.1.M6",
+  smartScreenEdgeDisabled = "SYS.2.2.3.M13"
 }

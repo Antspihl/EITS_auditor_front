@@ -7,6 +7,11 @@ export type Sys223M5 = Measure & {
   antivirusUpToDate: boolean,
 }
 
+export type Sys223M13 = Measure & {
+  smartScreenEdgeDisabled: boolean,
+  smartScreenPuaDisabled: boolean
+}
+
 export type Sys21M1 = Measure & {
   screenSaverIsEnabled: boolean,
   screenSaverPasswordProtected: boolean,

@@ -46,19 +46,16 @@ const translatedKeysDict = ref<{ [key: string]: string }>({});
 
 function setTranslatedKeys() {
   for (const key in measure) {
-    if ((TranslationEnum as Record<string, any>)[key] !== undefined ||
-      (TranslationEnum as Record<string, any>)[key] === ""
-    ) {
+    if (typeof TranslationEnum[key as keyof typeof TranslationEnum] !== 'undefined') {
       sortedKeys.value.push(key);
       translatedKeysDict.value[key] = TranslationEnum[key as keyof typeof TranslationEnum];
-    }
-    else {
-       sortedKeys.value.push(key);
-        translatedKeysDict.value[key] = key;
+    } else {
+      sortedKeys.value.push(key);
+      translatedKeysDict.value[key] = key;
     }
   }
-  sortedKeys.value.sort();
 }
+
 
 const { measure, name } = defineProps<{
   measure: Measure;
