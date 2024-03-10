@@ -1,7 +1,15 @@
 <template>
   <v-expansion-panel>
     <v-expansion-panel-title>
-      {{ name }}
+      <v-row>
+        <v-col>
+          {{ name }}
+        </v-col>
+        <v-col
+          cols="1">
+          <StatusIcon :status="areAllTrue(measure)"/>
+        </v-col>
+      </v-row>
     </v-expansion-panel-title>
     <v-expansion-panel-text>
       <v-list
@@ -13,21 +21,12 @@
         <v-list-item>
           <v-row>
             <v-col>
-        {{ translatedKeysDict[key] }}
+              {{ translatedKeysDict[key] }}
             </v-col>
             <v-col
               cols="1"
             >
-              <v-icon
-                v-if="measure[key]"
-                icon="mdi-check-circle"
-                color="primary"
-              ></v-icon>
-              <v-icon
-                v-else
-                icon="mdi-close-circle"
-                color="accent"
-              ></v-icon>
+              <StatusIcon :status="measure[key]"/>
             </v-col>
           </v-row>
         </v-list-item>
@@ -37,30 +36,39 @@
 </template>
 
 <script setup lang="ts">
-import { Measure } from "@/molecules/types";
-import { TranslationEnum } from "@/molecules/translation";
+import {Measure} from "@/molecules/types";
+import {TranslationEnum} from "@/molecules/translation";
 import {onBeforeMount, ref} from "vue";
+import StatusIcon from "@/molecules/StatusIcon.vue";
 
 const sortedKeys = ref<string[]>([]);
 const translatedKeysDict = ref<{ [key: string]: string }>({});
 
+
 function setTranslatedKeys() {
   for (const key in measure) {
-    if ((TranslationEnum as Record<string, any>)[key] !== undefined ||
-      (TranslationEnum as Record<string, any>)[key] === ""
-    ) {
+    if (typeof TranslationEnum[key as keyof typeof TranslationEnum] !== 'undefined') {
       sortedKeys.value.push(key);
       translatedKeysDict.value[key] = TranslationEnum[key as keyof typeof TranslationEnum];
-    }
-    else {
-       sortedKeys.value.push(key);
-        translatedKeysDict.value[key] = key;
+    } else {
+      sortedKeys.value.push(key);
+      translatedKeysDict.value[key] = key;
     }
   }
   sortedKeys.value.sort();
 }
 
-const { measure, name } = defineProps<{
+function areAllTrue(measure: Measure): boolean {
+  for (const key in measure) {
+    if (measure[key as keyof Measure] !== true) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+const {measure, name} = defineProps<{
   measure: Measure;
   name: string;
 }>();
