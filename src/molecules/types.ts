@@ -34,3 +34,7 @@ export type Sys21M6 = Measure & {
   antiMalwareUpToDate: boolean
 }
 
+export type Sys223M14 = Measure & {
+  cortanaDisabled: boolean
+}
+

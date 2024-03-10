@@ -22,7 +22,9 @@ export enum TranslationEnum {
   antiMalwareUpToDate= "Antivirus on ajakohane",
   //Sys223M13
   smartScreenEdgeDisabled = "a. Microsoft Defenderi funktsioon SmartScreen, mis kontrollib Internetist (MS Edge browserit kasutades) alla laaditud faile ja veebisisu võimaliku kahjurtarkvara suhtes, kuid võib teatud tingimustel edastada Microsoftile isikuandmeid, on desaktiveeritud.",
-  smartScreenPuaDisabled = "SmartScreenPua on välja lülitatud"
+  smartScreenPuaDisabled = "SmartScreenPua on välja lülitatud",
+  //Sys223M14
+  cortanaDisabled = "a. Digitaalne assistent Cortana on desaktiveeritud."
 }
 
 export enum TranslateMeasure {
@@ -31,5 +33,6 @@ export enum TranslateMeasure {
   firewallEnabled = "SY.2.2.3.M5",
   automaticUpdatingEnabled = "SYS.2.1.M3",
   antiMalwareEnabled = "SYS.2.1.M6",
-  smartScreenEdgeDisabled = "SYS.2.2.3.M13"
+  smartScreenEdgeDisabled = "SYS.2.2.3.M13",
+  cortanaDisabled = "SYS.2.2.3.M14"
 }
