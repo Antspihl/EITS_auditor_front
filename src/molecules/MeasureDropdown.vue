@@ -55,7 +55,7 @@ function setTranslatedKeys() {
       translatedKeysDict.value[key] = key;
     }
   }
-  sortedKeys.value.sort();
+  sortedKeys.value.sort((a, b) => a.localeCompare(b));
 }
 
 function areAllTrue(measure: Measure): boolean {

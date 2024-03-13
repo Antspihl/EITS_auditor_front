@@ -5,6 +5,7 @@ import * as Sys from "@/molecules/types";
 export const API_URL: string = "http://localhost:8080/api/";
 export const useMainStore = defineStore('main', {
   state: () => ({
+    // Update getAmountOfMeasures if you add more measures
     Sys21M1: {} as Sys.Sys21M1,
     Sys21M3: {} as Sys.Sys21M3,
     Sys21M6: {} as Sys.Sys21M6,
