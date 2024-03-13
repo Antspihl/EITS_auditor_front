@@ -28,7 +28,6 @@ const mainStore = useMainStore();
 
 function getMeasureTitle(obj: Measure) {
   for (const key in obj) {
-    console.log(key, TranslateMeasure[key as keyof typeof TranslateMeasure])
     if ((TranslateMeasure as Record<string, any>)[key] !== undefined) {
       return TranslateMeasure[key as keyof typeof TranslateMeasure];
     }

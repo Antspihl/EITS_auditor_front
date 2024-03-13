@@ -19,12 +19,18 @@ export enum TranslationEnum {
   previousStateIsRestorable = "f. Vajadusel on võimalik klientarvutis taastada uuendamise eelne tarkvaraseis.",
   //Sys21M6
   antiMalwareEnabled = "a. Klientarvutid on varustatud aktiveeritud kahjurvaratõrje tarkvaraga.",
-  antiMalwareUpToDate= "Antivirus on ajakohane",
+  antiMalwareUpToDate = "Antivirus on ajakohane ",
   //Sys223M13
   smartScreenEdgeDisabled = "a. Microsoft Defenderi funktsioon SmartScreen, mis kontrollib Internetist (MS Edge browserit kasutades) alla laaditud faile ja veebisisu võimaliku kahjurtarkvara suhtes, kuid võib teatud tingimustel edastada Microsoftile isikuandmeid, on desaktiveeritud.",
   smartScreenPuaDisabled = "SmartScreenPua on välja lülitatud",
   //Sys223M14
-  cortanaDisabled = "a. Digitaalne assistent Cortana on desaktiveeritud."
+  cortanaDisabled = "a. Digitaalne assistent Cortana on desaktiveeritud.",
+  //Sys223M9
+  KerberosOrNTLMv2Enabled = "a. Keskseks autentimiseks kasutatakse Kerberost. Kui seda ei tehta, siis alternatiivina võib kasutada autentimisprotokolli NTLMv2.",
+  //Sys223M18
+  allRemoteAssistanceRulesAreAllowed = "a. Lokaalse tulemüüri konfiguratsioon võimaldab kasutada kaugtoevahendit Remote Assistance.",
+  //Sys223M19
+  allRDPRulesAreAllowed = "a. Lokaalse tulemüüri konfiguratsioon võimaldab kasutada RDP-d (ingl Remote Desktop Protocol, RDP)."
 }
 
 export enum TranslateMeasure {
@@ -34,5 +40,8 @@ export enum TranslateMeasure {
   automaticUpdatingEnabled = "SYS.2.1.M3",
   antiMalwareEnabled = "SYS.2.1.M6",
   smartScreenEdgeDisabled = "SYS.2.2.3.M13",
-  cortanaDisabled = "SYS.2.2.3.M14"
+  cortanaDisabled = "SYS.2.2.3.M14",
+  KerberosOrNTLMv2Enabled = "SYS.2.2.3.M9",
+  allRemoteAssistanceRulesAreAllowed = "SYS.2.2.3.M18",
+  allRDPRulesAreAllowed = "SYS.2.2.3.M19"
 }
