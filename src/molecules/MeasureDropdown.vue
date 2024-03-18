@@ -13,7 +13,7 @@
     </v-expansion-panel-title>
     <v-expansion-panel-text>
       <v-list
-        v-for="(key) in sortedKeys"
+        v-for="key in sortedKeys"
         density="compact"
         lines="one"
         :key="key"
@@ -26,6 +26,19 @@
             <v-col
               cols="1"
             >
+              <v-tooltip
+                :text="key"
+                location="start"
+              >
+                <template v-slot:activator="{ props }">
+                <v-icon
+                  v-bind="props"
+                  class="mr-2"
+                  icon="mdi-help-circle"
+
+                ></v-icon>
+                </template>
+              </v-tooltip>
               <StatusIcon :status="measure[key]"/>
             </v-col>
           </v-row>
