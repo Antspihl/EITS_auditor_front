@@ -1,8 +1,8 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import axios from "axios";
 import * as Sys from "@/molecules/types";
 
-export const API_URL: string = "http://localhost:8080/api/";
+export const API_URL: string = "http://localhost:8080/api";
 // Add measures to this array to fetch them from the API
 export const MEASURES: string[] = [
   "SYS21M1", "SYS21M3", "SYS21M6",
@@ -12,37 +12,58 @@ export const MEASURES: string[] = [
 
 export const useMainStore = defineStore('main', {
   state: () => ({
-    measures: [] as Sys.Measure[],
-    loadingMessage: "Loading measures..."
+    urls: [
+      "http://localhost:8080",
+      "http://localhost:8081",
+      "http://localhost:8082",
+    ] as string[],
+    urlLoadingMessages: {} as Record<string, string>,
+    loadingArray: [] as string[],
+    urlMeasures: {} as Record<string, Sys.Measure[]>
   }),
-  getters: {
-    getMeasures(state): Sys.Measure[] {
-      return state.measures
-    },
-    getLoadedMeasures(state): number {
-      return state.measures.length
-    },
-    getAmountOfMeasures(): number {
-      return MEASURES.length
-    }
-  },
+  getters: {},
   actions: {
-    async fetchMeasures() {
-      this.measures = [];
-
-      for (const measure of MEASURES) {
-        await this.setMeasure(measure);
-        if (Object.keys((this as any)[measure]).length > 0) this.measures.push((this as any)[measure]);
+    async fetchForAllUrls() {
+      for (const url of this.urls) {
+        if (this.loadingArray.includes(url) || this.areLoaded(url)) continue;
+        await this.fetchAllMeasuresForUrl(url);
       }
     },
-    async setMeasure(measureName: string) {
+    fetchAllMeasuresForUrl: async function (url: string) {
+      this.urlMeasures[url] = [];
+      this.urlLoadingMessages[url] = `Loading measures for ${url}...`;
+      this.loadingArray.push(url);
+      for (const measure of MEASURES) {
+        this.urlLoadingMessages[url] = `Loading ${measure}...`;
+        const response = await this.fetchMeasure(measure, url + "/api");
+        if (Object.keys(response).length > 0) this.urlMeasures[url].push(response);
+      }
+      this.loadingArray = this.loadingArray.filter((value) => value !== url);
+    },
+
+    async fetchMeasure(measureName: string, url: string = API_URL) {
       try {
-        this.loadingMessage = `Loading ${measureName}`;
-        const response = await axios.get(API_URL + measureName, {});
-        (this as any)[measureName] = response.data;
+        const response = await axios.get(url + "/" + measureName, {});
+        return response.data;
       } catch (error) {
         console.error("Error fetching setups", error);
+        return {};
       }
-    }
+    },
+
+    areLoaded(url: string) {
+      if (!this.urlMeasures[url]) return false;
+      return this.urlMeasures[url].length === MEASURES.length;
+    },
+
+    getLoadingMessage(url: string) {
+      if (!this.urlLoadingMessages[url]) return "Waiting for other PCs...";
+      return this.urlLoadingMessages[url];
+    },
+
+    getPercentage: function (url: string) {
+      if (!this.urlMeasures[url]) return 0;
+      return Math.round(((this.urlMeasures[url].length / MEASURES.length) * 100) * 10) / 10;
+    },
   }
 })

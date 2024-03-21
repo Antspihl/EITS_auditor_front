@@ -30,7 +30,9 @@ export enum TranslationEnum {
   //Sys223M18
   allRemoteAssistanceRulesAreAllowed = "a. Lokaalse tulemüüri konfiguratsioon võimaldab kasutada kaugtoevahendit Remote Assistance.",
   //Sys223M19
-  allRDPRulesAreAllowed = "a. Lokaalse tulemüüri konfiguratsioon võimaldab kasutada RDP-d (ingl Remote Desktop Protocol, RDP)."
+  allRDPRulesAreAllowed = "a. Lokaalse tulemüüri konfiguratsioon võimaldab kasutada RDP-d (ingl Remote Desktop Protocol, RDP).",
+  //Error URL
+  faultyURL = "Vigane URL"
 }
 
 export enum TranslateMeasure {
@@ -43,5 +45,6 @@ export enum TranslateMeasure {
   cortanaDisabled = "SYS.2.2.3.M14",
   KerberosOrNTLMv2Enabled = "SYS.2.2.3.M9",
   allRemoteAssistanceRulesAreAllowed = "SYS.2.2.3.M18",
-  allRDPRulesAreAllowed = "SYS.2.2.3.M19"
+  allRDPRulesAreAllowed = "SYS.2.2.3.M19",
+  faultyURL = "Faulty URL"
 }

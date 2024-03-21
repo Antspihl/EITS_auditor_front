@@ -4,6 +4,12 @@
       <h3>E-ITS audiitor</h3>
     </v-app-bar-title>
 
+    <v-btn
+      class="mr-6"
+      density="comfortable"
+      icon="mdi-cog"
+    >
+    </v-btn>
     <v-switch
       class="pr-16 pt-5"
       v-model="isLight"

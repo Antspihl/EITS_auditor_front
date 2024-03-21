@@ -1,7 +1,7 @@
 <template>
-  <AuditList />
+  <UrlTabs />
 </template>
 
 <script lang="ts" setup>
-  import AuditList from '@/components/AuditList.vue'
+  import UrlTabs from "@/components/UrlTabs.vue";
 </script>

@@ -1,3 +1,3 @@
 export type Measure = {
-  [key: string]: any;
+  [key: string]: boolean;
 }

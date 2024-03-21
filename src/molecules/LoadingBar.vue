@@ -3,13 +3,12 @@
     stream
     color="primary"
     height="10"
-    :buffer-value="mainStore.getLoadedMeasures / mainStore.getAmountOfMeasures * 100"
+    :buffer-value="mainStore.getPercentage(url)"
   />
   <h2
     class="text-center pt-6"
-    v-if="mainStore.loadingMessage"
   >
-    {{ mainStore.loadingMessage }} ({{ mainStore.getLoadedMeasures }} / {{ mainStore.getAmountOfMeasures }})
+    {{ mainStore.getLoadingMessage(url) }} {{ mainStore.getPercentage(url) }}%
   </h2>
 </template>
 
@@ -17,4 +16,8 @@
 import {useMainStore} from '@/api/MainStore';
 
 const mainStore = useMainStore();
+
+defineProps<{
+  url: string;
+}>();
 </script>
