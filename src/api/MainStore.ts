@@ -29,7 +29,8 @@ export const useMainStore = defineStore('main', {
         await this.fetchAllMeasuresForUrl(url);
       }
     },
-    fetchAllMeasuresForUrl: async function (url: string) {
+
+    async fetchAllMeasuresForUrl(url: string) {
       this.urlMeasures[url] = [];
       this.urlLoadingMessages[url] = `Loading measures for ${url}...`;
       this.loadingArray.push(url);
@@ -51,6 +52,16 @@ export const useMainStore = defineStore('main', {
       }
     },
 
+    async testURL(url: string) {
+      try {
+        const response = await axios.get(url + "/api", {timeout: 5000}, );
+        return response.status === 200;
+      } catch (error) {
+        console.error("Error fetching setups", error);
+        return false;
+      }
+    },
+
     areLoaded(url: string) {
       if (!this.urlMeasures[url]) return false;
       return this.urlMeasures[url].length === MEASURES.length;
@@ -65,5 +76,6 @@ export const useMainStore = defineStore('main', {
       if (!this.urlMeasures[url]) return 0;
       return Math.round(((this.urlMeasures[url].length / MEASURES.length) * 100) * 10) / 10;
     },
+
   }
 })

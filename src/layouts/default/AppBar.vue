@@ -1,15 +1,35 @@
 <template>
   <v-app-bar flat>
     <v-app-bar-title>
-      <h3>E-ITS audiitor</h3>
+      <v-row>
+        <v-col
+          cols="2"
+          class="v-title"
+        >
+          <span>E-ITS audiitor</span>
+        </v-col>
+        <v-col
+          class="align-self-auto"
+        >
+          <v-btn
+            @click="router.push('/')"
+          >
+            <v-icon>
+              mdi-home
+            </v-icon>
+            Meetmed
+          </v-btn>
+          <v-btn
+            @click="router.push('/settings')"
+          >
+            <v-icon>
+              mdi-cog
+            </v-icon>
+            Seaded
+          </v-btn>
+        </v-col>
+      </v-row>
     </v-app-bar-title>
-
-    <v-btn
-      class="mr-6"
-      density="comfortable"
-      icon="mdi-cog"
-    >
-    </v-btn>
     <v-switch
       class="pr-16 pt-5"
       v-model="isLight"
@@ -25,7 +45,9 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 import {useTheme} from "vuetify";
+import {useRouter} from "vue-router";
 
+const router = useRouter()
 const isLight = ref(false);
 const theme = useTheme()
 
@@ -39,3 +61,9 @@ function toggleTheme() {
   }
 }
 </script>
+
+<style>
+.v-title {
+  max-width: 130px;
+}
+</style>
