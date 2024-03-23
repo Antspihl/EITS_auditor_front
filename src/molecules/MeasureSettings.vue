@@ -29,7 +29,7 @@
           <v-btn
             color="info"
             @click="selectedMeasures = mainStore.allMeasures"
-            :disabled="selectedMeasures === mainStore.allMeasures"
+            :disabled="selectedMeasures.length === mainStore.allMeasures.length"
           >
             Vali kõik
           </v-btn>
@@ -40,7 +40,7 @@
           <v-btn
             color="primary"
             @click="saveMeasures"
-            :disabled="selectedMeasures === mainStore.selectedMeasures || selectedMeasures.length === 0"
+            :disabled="selectedMeasures.length === 0 || selectedMeasures === mainStore.selectedMeasures"
           >
             Salvesta
           </v-btn>
@@ -56,7 +56,6 @@ import {onMounted, ref} from "vue";
 
 const mainStore = useMainStore();
 const selectedMeasures = ref<string[]>([]);
-const allMeasures = ref<string[]>([]);
 
 function saveMeasures () {
   if (selectedMeasures.value.length !== 0) {
@@ -66,6 +65,5 @@ function saveMeasures () {
 
 onMounted(() => {
   selectedMeasures.value = mainStore.selectedMeasures;
-  allMeasures.value = mainStore.allMeasures;
 });
 </script>
