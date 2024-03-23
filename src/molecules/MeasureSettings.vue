@@ -20,6 +20,23 @@
               {{ measure }}
            </v-chip>
           </v-chip-group>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col
+          cols="auto"
+        >
+          <v-btn
+            color="info"
+            @click="selectedMeasures = mainStore.allMeasures"
+            :disabled="selectedMeasures === mainStore.allMeasures"
+          >
+            Vali kõik
+          </v-btn>
+        </v-col>
+        <v-col
+          cols="auto"
+        >
           <v-btn
             color="primary"
             @click="saveMeasures"

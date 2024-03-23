@@ -4,7 +4,7 @@
       <v-card-title>
         Seaded
       </v-card-title>
-      <v-expansion-panels>
+      <v-expansion-panels variant="accordion">
         <IpAddresses/>
         <MeasureSettings/>
       </v-expansion-panels>
