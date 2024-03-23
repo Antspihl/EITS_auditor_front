@@ -34,7 +34,7 @@
             color="info"
             @click="makeIpAddressesFromSubnet"
           >
-            Genereeri
+            Genereeri IP-d
           </v-btn>
         </v-col>
         <v-col cols="auto">
@@ -115,7 +115,10 @@ const portRules = [
 ];
 
 function makeIpAddressesFromSubnet() {
-  if (!subnet.value || !port.value) return;
+  if (!subnet.value || !port.value
+    || !/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,2}$/.test(subnet.value)
+    || !/^\d+$/.test(port.value)
+  ) return;
   const ips = [];
   const [ip, mask] = subnet.value.split('/');
   const maskLength = parseInt(mask);
