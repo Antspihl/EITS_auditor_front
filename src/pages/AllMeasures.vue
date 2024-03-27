@@ -1,14 +1,13 @@
 <template>
   <v-container>
-    <span>Meetmed</span>
     <v-col
-      v-if="mainStore.getMeasures"
+      v-if="mainStore.urlMeasures[url]"
     >
       <v-expansion-panels
         variant="accordion"
       >
         <MeasureDropdown
-          v-for="(measure, index) in measures"
+          v-for="(measure, index) in mainStore.urlMeasures[url]"
           :key="index"
           :measure="measure"
           :name="getMeasureTitle(measure)"
@@ -20,7 +19,7 @@
 
 <script lang="ts" setup>
 import {useMainStore} from "@/api/MainStore";
-import MeasureDropdown from "@/molecules/MeasureDropdown.vue";
+import MeasureDropdown from "@/components/MeasureDropdown.vue";
 import {Measure} from "@/molecules/types";
 import {TranslateMeasure} from "@/molecules/translation";
 
@@ -36,7 +35,7 @@ function getMeasureTitle(obj: Measure) {
 }
 
 defineProps<{
-  measures: Measure[];
+  url: string;
 }>();
 
 </script>

@@ -1,22 +1,31 @@
 <template>
   <LoadingBar
-    v-if="loadingMeasures"
+    v-if="!mainStore.areLoaded(url) && !mainStore.areLoaded(url)"
+    :url="url"
   />
-  <AllMeasures v-if="!loadingMeasures" :measures="mainStore.measures"/>
+  <AllMeasures
+    :url="url"
+  />
 </template>
 
 <script lang="ts" setup>
 import {useMainStore} from "@/api/MainStore";
-import {onBeforeMount, ref} from "vue";
+import {onMounted, onUpdated} from "vue";
 import AllMeasures from "@/pages/AllMeasures.vue";
 import LoadingBar from "@/molecules/LoadingBar.vue";
 
-
 const mainStore = useMainStore();
-const loadingMeasures = ref(false);
+const props = defineProps<{
+  url: string;
+}>();
 
-onBeforeMount(() => {
-  loadingMeasures.value = true;
-  mainStore.fetchMeasures().then(() => loadingMeasures.value = false)
+onMounted(() => {
+  mainStore.fetchAllMeasuresForUrl(props.url)
+})
+onUpdated(() => {
+  if (!mainStore.loadingArray.includes(props.url) &&
+    !mainStore.areLoaded(props.url)) {
+    mainStore.fetchAllMeasuresForUrl(props.url)
+  }
 })
 </script>

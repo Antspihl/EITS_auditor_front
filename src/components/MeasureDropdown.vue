@@ -73,7 +73,7 @@ function setTranslatedKeys() {
 
 function areAllTrue(measure: Measure): boolean {
   for (const key in measure) {
-    if (measure[key as keyof Measure] !== true) {
+    if (!measure[key as keyof Measure]) {
       return false;
     }
   }
