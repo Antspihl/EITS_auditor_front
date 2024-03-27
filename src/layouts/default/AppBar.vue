@@ -3,10 +3,10 @@
     <v-app-bar-title>
       <v-row>
         <v-col
-          cols="2"
+          cols="1"
           class="v-title"
         >
-          <span>E-ITS audiitor</span>
+          <h4>E-ITS audiitor</h4>
         </v-col>
         <v-col
           class="align-self-auto"
@@ -25,7 +25,7 @@
             <v-icon>
               mdi-cog
             </v-icon>
-            Seaded
+            Sätted
           </v-btn>
         </v-col>
       </v-row>
@@ -65,5 +65,6 @@ function toggleTheme() {
 <style>
 .v-title {
   max-width: 130px;
+  margin-top: 2px;
 }
 </style>

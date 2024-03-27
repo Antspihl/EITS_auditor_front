@@ -2,7 +2,7 @@
   <v-container>
     <v-card>
       <v-card-title>
-        Seaded
+        Sätted
       </v-card-title>
       <v-expansion-panels variant="accordion">
         <IpAddresses/>

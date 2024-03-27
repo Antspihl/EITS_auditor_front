@@ -6,12 +6,8 @@ export const API_URL: string = "http://localhost:8080/api";
 
 export const useMainStore = defineStore('main', {
   state: () => ({
-    urls: [
-      "http://localhost:8080",
-      "http://localhost:8081",
-      "http://localhost:8082",
-    ] as string[],
-    // Add measures to these arrays to fetch them from the API
+    urls: [] as string[],
+    // Add measures to these two arrays to add them to the selection
     allMeasures: ["SYS21M1", "SYS21M3", "SYS21M6",
       "SYS223M5", "SYS223M9", "SYS223M13",
       "SYS223M14", "SYS223M18", "SYS223M19"
@@ -34,6 +30,7 @@ export const useMainStore = defineStore('main', {
     },
 
     async fetchAllMeasuresForUrl(url: string) {
+      if (this.urlMeasures[url]) return;
       this.urlMeasures[url] = [];
       this.urlLoadingMessages[url] = `Loading measures for ${url}...`;
       this.loadingArray.push(url);
@@ -77,7 +74,7 @@ export const useMainStore = defineStore('main', {
 
     getPercentage: function (url: string) {
       if (!this.urlMeasures[url]) return 0;
-      return Math.round(((this.urlMeasures[url].length / this.selectedMeasures.length) * 100) * 10) / 10;
+      return Math.round((this.urlMeasures[url].length / this.selectedMeasures.length) * 100);
     },
 
   }

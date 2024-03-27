@@ -3,5 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-  import UrlTabs from "@/components/UrlTabs.vue";
+  import UrlTabs from "@/pages/UrlTabs.vue";
 </script>

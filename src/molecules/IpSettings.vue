@@ -4,6 +4,7 @@
       IP-Aadressid
     </v-expansion-panel-title>
     <v-expansion-panel-text>
+      <h5>IP aadresside generaator</h5>
       <v-row>
         <v-col>
             <v-text-field
@@ -14,9 +15,7 @@
               clearable
             />
         </v-col>
-        <v-col
-          cols="2"
-        >
+        <v-col cols="2">
             <v-text-field
               label="Port"
               v-model="port"
@@ -59,8 +58,9 @@
       <v-row>
         <v-textarea
           label="Kontrollitavad IP-aadressid"
-          hint="IP-d on komaga eraldatud, nt: localhost:8080, 192.168.1.1"
+          hint="IP-d on komaga eraldatud, nt: http://localhost:8080, http://192.168.1.1"
           v-model="ipAddresses"
+          :loading="loading"
           auto-grow
           clearable
         >
@@ -142,6 +142,14 @@ async function saveIpAddresses() {
   ipAddresses.value = workingURLs.join(', ');
   mainStore.urls = workingURLs;
   loading.value = false;
+
+  if (workingURLs.length === 0) {
+    alert('Ükski URL ei tööta. Kontrolli, et aadressid oleksid õiged.')
+  } else if (workingURLs.length < urls.length) {
+    alert('Mõni URL ei töödanud. Kontrolli, et aadressid oleksid õiged.');
+  } else {
+    alert('URL-id salvestatud');
+  }
 }
 
 onMounted(() => {

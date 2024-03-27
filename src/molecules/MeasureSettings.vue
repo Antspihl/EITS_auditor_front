@@ -60,6 +60,7 @@ const selectedMeasures = ref<string[]>([]);
 function saveMeasures () {
   if (selectedMeasures.value.length !== 0) {
     mainStore.selectedMeasures = selectedMeasures.value;
+    alert('Meetmete muudatused salvestatud!');
   }
 }
 
