@@ -12,7 +12,8 @@ export const MEASURES: string[] = [
 
 export const useMainStore = defineStore('main', {
   state: () => ({
-    measures: [] as Sys.Measure[]
+    measures: [] as Sys.Measure[],
+    loadingMessage: "Loading measures..."
   }),
   getters: {
     getMeasures(state): Sys.Measure[] {
@@ -36,6 +37,7 @@ export const useMainStore = defineStore('main', {
     },
     async setMeasure(measureName: string) {
       try {
+        this.loadingMessage = `Loading ${measureName}`;
         const response = await axios.get(API_URL + measureName, {});
         (this as any)[measureName] = response.data;
       } catch (error) {
