@@ -35,7 +35,6 @@
                   v-bind="props"
                   class="mr-2"
                   icon="mdi-help-circle"
-
                 ></v-icon>
                 </template>
               </v-tooltip>

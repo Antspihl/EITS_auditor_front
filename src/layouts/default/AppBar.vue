@@ -1,37 +1,24 @@
 <template>
   <v-app-bar flat>
     <v-app-bar-title>
-      <v-row>
-        <v-col
-          cols="1"
-          class="v-title"
-        >
-          <h4>E-ITS audiitor</h4>
-        </v-col>
-        <v-col
-          class="align-self-auto"
-        >
-          <v-btn
-            @click="router.push('/')"
-          >
-            <v-icon>
-              mdi-home
-            </v-icon>
-            Meetmed
-          </v-btn>
-          <v-btn
-            @click="router.push('/settings')"
-          >
-            <v-icon>
-              mdi-cog
-            </v-icon>
-            Sätted
-          </v-btn>
-        </v-col>
-      </v-row>
+      <h4>E-ITS audiitor</h4>
     </v-app-bar-title>
+    <v-btn
+      @click="router.push('/')"
+      prepend-icon="mdi-home"
+    >
+      Meetmed
+    </v-btn>
+    <v-btn
+      @click="router.push('/settings')"
+      prepend-icon="mdi-cog"
+    >
+      Sätted
+    </v-btn>
+    <DownloadButton
+    />
     <v-switch
-      class="pr-16 pt-5"
+      class="pr-16 pt-5 pl-4"
       v-model="isLight"
       @click="toggleTheme"
     >
@@ -46,6 +33,7 @@
 import {ref} from "vue";
 import {useTheme} from "vuetify";
 import {useRouter} from "vue-router";
+import DownloadButton from "@/molecules/DownloadButton.vue";
 
 const router = useRouter()
 const isLight = ref(false);
@@ -61,10 +49,3 @@ function toggleTheme() {
   }
 }
 </script>
-
-<style>
-.v-title {
-  max-width: 130px;
-  margin-top: 2px;
-}
-</style>
