@@ -83,7 +83,8 @@ function downloadMap(urls: string[]) {
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${new Date().toLocaleString('et-EE').replace(/:/g, '-').replace(/\./g, '-').replace(/,/g, '')}-E-ITS-Audit.txt`;
+  const dateString = new Date().toLocaleString('et-EE').replace(/,/g, '');
+  a.download = `${dateString}-E-ITS-audit.txt`
   document.body.appendChild(a);
   a.click();
   window.URL.revokeObjectURL(url);

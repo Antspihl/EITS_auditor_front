@@ -6,7 +6,7 @@ export const API_URL: string = "http://localhost:8080/api";
 
 export const useMainStore = defineStore('main', {
   state: () => ({
-    urls: [] as string[],
+    urls: ['http://localhost:8080'] as string[],
     // Add measures to these two arrays to add them to the selection
     allMeasures: ["SYS21M1", "SYS21M3", "SYS21M6",
       "SYS223M5", "SYS223M9", "SYS223M13",
