@@ -150,6 +150,7 @@ async function saveIpAddresses() {
   } else {
     alert('URL-id salvestatud');
   }
+  await mainStore.fetchForAllUrls();
 }
 
 onMounted(() => {
