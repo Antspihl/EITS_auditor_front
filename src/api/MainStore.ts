@@ -20,6 +20,7 @@ export const useMainStore = defineStore('main', {
   getters: {},
   actions: {
     async fetchForAllUrls() {
+      if (this.urls.length === 0 || this.selectedMeasures.length === 0) return;
       for (const url of this.urls) {
         if (this.loadingArray.includes(url) || this.areLoaded(url)) continue;
         await this.fetchAllMeasuresForUrl(url);
@@ -27,6 +28,8 @@ export const useMainStore = defineStore('main', {
     },
 
     async fetchAllMeasuresForUrl(url: string) {
+      if (this.selectedMeasures.length === 0) return;
+      console.log("Fetching all measures for", url)
       if (this.urlMeasures[url]) return;
       this.urlMeasures[url] = [];
       this.urlLoadingMessages[url] = `Loading measures for ${url}...`;
@@ -40,6 +43,7 @@ export const useMainStore = defineStore('main', {
     },
 
     async fetchMeasure(measureName: string, url: string = API_URL) {
+      console.log("Fetching measure", measureName, "from", url)
       try {
         const response = await axios.get(url + "/" + measureName, {});
         return response.data;
@@ -51,7 +55,7 @@ export const useMainStore = defineStore('main', {
 
     async testURL(url: string) {
       try {
-        const response = await axios.get(url + "/api", {timeout: 5000}, );
+        const response = await axios.get(url + "/api", {timeout: 5000},);
         return response.status === 200;
       } catch (error) {
         console.error("Error fetching setups", error);

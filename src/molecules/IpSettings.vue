@@ -194,7 +194,7 @@ async function saveIpAddresses() {
   } else {
     alert('URL-id salvestatud');
   }
-  await mainStore.fetchForAllUrls();
+  await mainStore.fetchForAllUrls()
 }
 
 function restoreIpAddresses() {
