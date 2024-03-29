@@ -10,15 +10,16 @@
           <v-chip-group
             v-model="selectedMeasures"
             multiple
+            column
             filter
           >
-           <v-chip
+            <v-chip
               v-for="measure in mainStore.allMeasures"
               :key="measure"
               :value="measure"
-           >
+            >
               {{ measure }}
-           </v-chip>
+            </v-chip>
           </v-chip-group>
         </v-col>
       </v-row>
@@ -57,7 +58,7 @@ import {onMounted, ref} from "vue";
 const mainStore = useMainStore();
 const selectedMeasures = ref<string[]>([]);
 
-function saveMeasures () {
+function saveMeasures() {
   if (selectedMeasures.value.length !== 0) {
     mainStore.selectedMeasures = selectedMeasures.value;
     alert('Meetmete muudatused salvestatud!');
