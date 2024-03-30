@@ -2,6 +2,7 @@
   <v-tabs
     v-if="mainStore.urls.length > 0"
     v-model="tab"
+    center-active
     grow
   >
     <v-tab
@@ -21,10 +22,10 @@
   >
     <v-card>
       <v-card-title>
-        Lisa päritavad URLid sättetes, et saaksid neid siin vaadata
+        Lisa päritavad URLid sätetes, et saaksid neid siin vaadata
         <v-btn
           color="primary"
-          @click="router.push('/settings')"
+          @click="router.push('Settings')"
         >
           Lisama
         </v-btn>

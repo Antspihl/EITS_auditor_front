@@ -7,15 +7,12 @@ export const API_URL: string = "http://localhost:8080/api";
 export const useMainStore = defineStore('main', {
   state: () => ({
     urls: [] as string[],
-    // Add measures to these two arrays to add them to the selection
+    // Add measures to these this array to add them to the selection
     allMeasures: ["SYS21M1", "SYS21M3", "SYS21M6",
       "SYS223M5", "SYS223M9", "SYS223M13",
       "SYS223M14", "SYS223M18", "SYS223M19"
     ] as string[],
-    selectedMeasures: ["SYS21M1", "SYS21M3", "SYS21M6",
-      "SYS223M5", "SYS223M9", "SYS223M13",
-      "SYS223M14", "SYS223M18", "SYS223M19"
-    ] as string[],
+    selectedMeasures: [] as string[],
     urlLoadingMessages: {} as Record<string, string>,
     loadingArray: [] as string[],
     urlMeasures: {} as Record<string, Sys.Measure[]>
@@ -23,6 +20,7 @@ export const useMainStore = defineStore('main', {
   getters: {},
   actions: {
     async fetchForAllUrls() {
+      if (this.urls.length === 0 || this.selectedMeasures.length === 0) return;
       for (const url of this.urls) {
         if (this.loadingArray.includes(url) || this.areLoaded(url)) continue;
         await this.fetchAllMeasuresForUrl(url);
@@ -30,6 +28,8 @@ export const useMainStore = defineStore('main', {
     },
 
     async fetchAllMeasuresForUrl(url: string) {
+      if (this.selectedMeasures.length === 0) return;
+      console.log("Fetching all measures for", url)
       if (this.urlMeasures[url]) return;
       this.urlMeasures[url] = [];
       this.urlLoadingMessages[url] = `Loading measures for ${url}...`;
@@ -43,6 +43,7 @@ export const useMainStore = defineStore('main', {
     },
 
     async fetchMeasure(measureName: string, url: string = API_URL) {
+      console.log("Fetching measure", measureName, "from", url)
       try {
         const response = await axios.get(url + "/" + measureName, {});
         return response.data;
@@ -54,7 +55,7 @@ export const useMainStore = defineStore('main', {
 
     async testURL(url: string) {
       try {
-        const response = await axios.get(url + "/api", {timeout: 5000}, );
+        const response = await axios.get(url + "/api", {timeout: 5000},);
         return response.status === 200;
       } catch (error) {
         console.error("Error fetching setups", error);
