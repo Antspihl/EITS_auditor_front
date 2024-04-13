@@ -62,6 +62,7 @@ function saveMeasures() {
   if (selectedMeasures.value.length !== 0) {
     mainStore.selectedMeasures = selectedMeasures.value;
     alert('Meetmete muudatused salvestatud!');
+    localStorage.setItem('measures', JSON.stringify(selectedMeasures.value));
   }
 }
 
