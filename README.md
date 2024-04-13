@@ -1,5 +1,3 @@
-# essentials
-
 ## Project setup
 
 ```
@@ -26,32 +24,26 @@ npm run dev
 pnpm dev
 ```
 
-### Compiles and minifies for production
-
+### Docker Image Update. Replace [tag] with the version number.
+```bash
+docker build -t antspihl/eits-auditor-front:[tag] .
 ```
-# yarn
-yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
+```bash
+docker login
 ```
-
-### Lints and fixes files
-
+```bash
+docker tag antspihl/eits-auditor-front:[tag] antspihl/eits-auditor-front:[tag]
 ```
-# yarn
-yarn lint
-
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
+```bash
+docker push antspihl/eits-auditor-front:[tag]
 ```
 
-### Customize configuration
+### Pull and run the image
 
-See [Configuration Reference](https://vitejs.dev/config/).
+```bash
+docker login
+```
+```bash
+docker run -it -p 3000:3000 --rm --name eits-auditor-front antspihl/eits-auditor-front:tag
+```
+
