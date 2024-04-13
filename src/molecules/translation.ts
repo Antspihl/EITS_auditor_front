@@ -1,7 +1,7 @@
 export enum TranslationEnum {
   //Sys21M1
-  screenSaverIsEnabled = "e.2 Ekraanilukk käivitub kasutaja poolt käsitsi aktiveerituna või automaatselt pärast ettemääratud ajavahemikku",
-  screenSaverPasswordProtected = "e.4 Ekraaniluku avamine on võimalik vaid kasutaja autentimisega.",
+  screenSaverIsEnabled = "d.2 Ekraanilukk käivitub kasutaja poolt käsitsi aktiveerituna või automaatselt pärast ettemääratud ajavahemikku",
+  screenSaverPasswordProtected = "d.4 Ekraaniluku avamine on võimalik vaid kasutaja autentimisega.",
   needAuthToChangePassword = "c. Autentimisandmeid (nt parooli) muuta saab üksnes selleks volitatud kasutaja.",
   autoLogonIsDisabled = "a. Klientarvutit on võimalik kasutada ainult end nõuetekohaselt autentinud kasutajal.",
   baseObjectsAreAudited = "b. Mistahes tegevuse puhul klientarvutis on võimalik tuvastada tegevuse sooritaja.",

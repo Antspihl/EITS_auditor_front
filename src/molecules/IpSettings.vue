@@ -194,6 +194,10 @@ async function saveIpAddresses() {
   } else {
     alert('URL-id salvestatud');
   }
+
+  // Save urls to local storage
+  localStorage.setItem('urls', mainStore.urls.join(', '));
+
   await mainStore.fetchForAllUrls()
 }
 
