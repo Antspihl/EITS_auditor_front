@@ -9,7 +9,7 @@ export const useMainStore = defineStore('main', {
     urls: [] as string[],
     // Add measures to these this array to add them to the selection
     allMeasures: ["SYS21M1", "SYS21M3", "SYS21M6",
-      "SYS223M5", "SYS223M9", "SYS223M13",
+      "SYS223M4", "SYS223M5", "SYS223M9", "SYS223M13",
       "SYS223M14", "SYS223M18", "SYS223M19"
     ] as string[],
     selectedMeasures: [] as string[],
@@ -55,7 +55,7 @@ export const useMainStore = defineStore('main', {
 
     async testURL(url: string) {
       try {
-        const response = await axios.get(url + "/api", {timeout: 5000},);
+        const response = await axios.get(url + "/api",  {timeout: 5000} );
         return response.status === 200;
       } catch (error) {
         console.error("Error fetching setups", error);
