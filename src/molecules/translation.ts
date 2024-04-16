@@ -7,6 +7,7 @@ export enum TranslationEnum {
   baseObjectsAreAudited = "b. Mistahes tegevuse puhul klientarvutis on võimalik tuvastada tegevuse sooritaja.",
   //Sys223M4
   telemetrySendingDisabled = "a. Telemeetriateenuste andmete edastamine operatsioonisüsteemi tootjale on seadistuses piiratud. Windows 10 või Windows 11 Enterprise versiooni kasutamisel on telemeetria tase seadistatud valikväärtusele 0 (Security).",
+  telemetrySendingDisabledByFirewall = "b. Kui klientarvuti telemeetriaseadistusi ei ole võimalik piirata, on andmete edastamine operatsioonisüsteemi tootjale blokeeritud võrgutaseme meetmetega (nt tulemüürireeglitega).",
   //Sys223M5
   antivirusEnabled = "a. Kui IT-süsteemi kaitsmiseks kahjurvaraga nakatumise eest ei ole kasutusele võetud samaväärseid või rangemaid meetmeid, on Windows klientarvutis aktiveeritud Microsofti kahjurvaratõrje (nt Windows Defender) komponendid.",
   firewallEnabled = "Tulemüür on aktiveeritud",
