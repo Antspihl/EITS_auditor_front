@@ -29,8 +29,7 @@
         >
           <v-btn
             color="info"
-            @click="selectedMeasures = mainStore.allMeasures"
-            :disabled="selectedMeasures.length === mainStore.allMeasures.length"
+            @click="selectAll"
           >
             Vali kõik
           </v-btn>
@@ -60,9 +59,18 @@ const selectedMeasures = ref<string[]>([]);
 
 function saveMeasures() {
   if (selectedMeasures.value.length !== 0) {
+    selectedMeasures.value.sort((a, b) => a.localeCompare(b));
     mainStore.selectedMeasures = selectedMeasures.value;
     alert('Meetmete muudatused salvestatud!');
     localStorage.setItem('measures', JSON.stringify(selectedMeasures.value));
+  }
+}
+
+function selectAll() {
+  if (selectedMeasures.value.length === mainStore.allMeasures.length) {
+    selectedMeasures.value = [];
+  } else {
+    selectedMeasures.value = mainStore.allMeasures;
   }
 }
 

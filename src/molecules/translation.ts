@@ -5,6 +5,8 @@ export enum TranslationEnum {
   needAuthToChangePassword = "c. Autentimisandmeid (nt parooli) muuta saab üksnes selleks volitatud kasutaja.",
   autoLogonIsDisabled = "a. Klientarvutit on võimalik kasutada ainult end nõuetekohaselt autentinud kasutajal.",
   baseObjectsAreAudited = "b. Mistahes tegevuse puhul klientarvutis on võimalik tuvastada tegevuse sooritaja.",
+  //Sys223M4
+  telemetrySendingDisabled = "a. Telemeetriateenuste andmete edastamine operatsioonisüsteemi tootjale on seadistuses piiratud. Windows 10 või Windows 11 Enterprise versiooni kasutamisel on telemeetria tase seadistatud valikväärtusele 0 (Security).",
   //Sys223M5
   antivirusEnabled = "a. Kui IT-süsteemi kaitsmiseks kahjurvaraga nakatumise eest ei ole kasutusele võetud samaväärseid või rangemaid meetmeid, on Windows klientarvutis aktiveeritud Microsofti kahjurvaratõrje (nt Windows Defender) komponendid.",
   firewallEnabled = "Tulemüür on aktiveeritud",
@@ -38,12 +40,13 @@ export enum TranslationEnum {
 export enum TranslateMeasure {
   //the first value of type = Measure code
   screenSaverIsEnabled = "SYS.2.1.M1",
-  firewallEnabled = "SY.2.2.3.M5",
   automaticUpdatingEnabled = "SYS.2.1.M3",
+  telemetrySendingDisabled = "SYS.2.2.3.M4",
+  firewallEnabled = "SY.2.2.3.M5",
   antiMalwareEnabled = "SYS.2.1.M6",
+  KerberosOrNTLMv2Enabled = "SYS.2.2.3.M9",
   smartScreenEdgeDisabled = "SYS.2.2.3.M13",
   cortanaDisabled = "SYS.2.2.3.M14",
-  KerberosOrNTLMv2Enabled = "SYS.2.2.3.M9",
   allRemoteAssistanceRulesAreAllowed = "SYS.2.2.3.M18",
   allRDPRulesAreAllowed = "SYS.2.2.3.M19",
   faultyURL = "Faulty URL"
