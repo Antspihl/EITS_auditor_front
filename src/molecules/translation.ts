@@ -42,7 +42,7 @@ export enum TranslateMeasure {
   screenSaverIsEnabled = "SYS.2.1.M1",
   automaticUpdatingEnabled = "SYS.2.1.M3",
   telemetrySendingDisabled = "SYS.2.2.3.M4",
-  firewallEnabled = "SY.2.2.3.M5",
+  firewallEnabled = "SYS.2.2.3.M5",
   antiMalwareEnabled = "SYS.2.1.M6",
   KerberosOrNTLMv2Enabled = "SYS.2.2.3.M9",
   smartScreenEdgeDisabled = "SYS.2.2.3.M13",
