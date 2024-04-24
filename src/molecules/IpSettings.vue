@@ -68,8 +68,8 @@ const lastIpAddresses = ref('');
 const loading = ref(false);
 
 const urlsLabel = "Hetkel salvestatud URLid (Siia saab kirjutada)";
-const urlsHint = "URLid peavad olema eraldatud koma või semikooloniga, nt: http://localhost:8080, http://192.168.1.1";
-const urlsPlaceholder = "http://localhost:8080, http://192.168.1.1";
+const urlsHint = "URLid peavad olema eraldatud koma või semikooloniga, nt: http://192.168.1.1:12; http://[1:2:3:4:5:6:7:8]:30";
+const urlsPlaceholder = "http://127.0.0.1:8080, http://[0:0:0:0:0:0:0:1]:30, http://[::1]:56";
 const savingTooltip = "Salvestamine võib aega võtta, sest kontrollitakse iga aadressi.";
 const restoringTooltip = "Taasta seisund enne viimast salvestamist";
 
@@ -107,7 +107,6 @@ async function saveIpAddresses() {
 
 function restoreIpAddresses() {
   mainStore.urlString = lastIpAddresses.value;
-  lastIpAddresses.value = '';
 }
 
 onMounted(() => {
